@@ -3,7 +3,7 @@ import { Request ,Response, NextFunction} from 'express'
 import { appError } from "../utils/AppError";
 import db from './../../models'
 
-const userModel = db.sequelize.models.Student
+const userModel = db.sequelize.models.User
 
 export const Protect = async (req: Request, res:Response, next: NextFunction) => {
     try {
