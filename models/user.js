@@ -4,19 +4,19 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Student extends Model {
+  class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Student.belongsToMany(models.Course, {
+      User.belongsToMany(models.Course, {
         through : 'StudentCoursesJunc'
       })
     }
   }
-  Student.init({
+  User.init({
     id : {
       primaryKey:true,
       autoIncrement:true,
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Student',
+    modelName: 'User',
     hooks : {
       beforeCreate: (async (user) => {
         const hashedPassword = await bcrypt.hash(user.getDataValue('password'),12);
@@ -60,5 +60,5 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
   });
-  return Student;
+  return User;
 };

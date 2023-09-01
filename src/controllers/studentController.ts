@@ -9,7 +9,7 @@ const cookieOptions : any = {
     secure : true
 }
 
-const userModel = db.sequelize.models.Student
+const userModel = db.sequelize.models.User
 const courseModel = db.sequelize.models.Course
 
 const filterObj = (object:any, ...chosenFields: string[]): object => {
