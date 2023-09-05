@@ -35,5 +35,11 @@ export const Protect = async (req: Request, res:Response, next: NextFunction) =>
 }
 
 export const adminProtect = (req: Request, res: Response, next: NextFunction) => {
-    
+    const user = req.user
+    if(user.role === 'Student'){
+        appError(res,401,Error('You have to be an admin to access this feature'))
+    }
+    else if (user.role === 'Admin'){
+        next()
+    }
 }

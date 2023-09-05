@@ -34,9 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type : DataTypes.STRING,
       allowNull:false,
-      unique : {
-        name : "SequelizeUniqueConstraintError"
-      }
+      unique : true
     },
     dateOfBirth : {
       type : DataTypes.DATE,
@@ -44,6 +42,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     passwordChangedAt: {
       type : DataTypes.DATE
+    },
+    role : {
+      type : DataTypes.ENUM('Student', 'Admin'),
+      defaultValue : 'Student',
+      allowNull : false
     }
   }, {
     sequelize,

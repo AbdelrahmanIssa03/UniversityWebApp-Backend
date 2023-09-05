@@ -12,7 +12,7 @@ const cookieOptions : any = {
 const userModel = db.sequelize.models.User
 const courseModel = db.sequelize.models.Course
 
-const filterObj = (object:any, ...chosenFields: string[]): object => {
+export const filterObj = (object:any, ...chosenFields: string[]): object => {
     let newObj : any = {}
     for(const key in object){
         if(chosenFields.includes(key)){
@@ -25,9 +25,9 @@ const filterObj = (object:any, ...chosenFields: string[]): object => {
 export const SignUp = async (req: express.Request, res:express.Response) => {
     try {
         const {name, dateOfBirth, password, Courses} = req.body
-        if(!name || !dateOfBirth || !password) {
-            throw new Error ('Please fill out all the required fields')
-        }
+        // if(!name || !dateOfBirth || !password) {
+        //     throw new Error ('Please fill out all the required fields')
+        // }
         let User = (await userModel.create({
             name,
             dateOfBirth,
@@ -131,7 +131,7 @@ export const registerCourse = async(req:express.Request, res:express.Response) =
         await course.save();
         res.status(200).json({
             status : "Success",
-            message : `You have successfully been enrolled in (courseName)`,
+            message : `You have successfully been enrolled in ${course.name}`,
             course,
             data : {
                 courses

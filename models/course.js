@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   Course.init({
     name: {
       type : DataTypes.STRING,
-      allowNull : false
+      allowNull : false,
     },
     id: {
       type : DataTypes.INTEGER,
@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue : 'N/A'
     },
     classroom : {
-      type : DataTypes.INTEGER,
+      type : DataTypes.STRING,
+      defaultValue : 'N/A'
     },
     Time : {
       type : DataTypes.STRING,
